@@ -1,0 +1,3 @@
+[submodule "chat-module"]
+	path = chat-module
+	url = https://github.com/MuhammadOrabi/ruby-chat-module
