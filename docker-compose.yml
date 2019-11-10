@@ -57,3 +57,12 @@ services:
       - es-data:/usr/share/elasticsearch/data
     ports:
       - 9200:9200
+  
+  cli:
+    build: client/
+    command: bash -c "go build"
+    volumes: 
+      - ./client/:/go/src/client
+    environment: 
+      - BASE_URL=web:3000
+
