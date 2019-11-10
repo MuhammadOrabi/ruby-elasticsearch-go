@@ -1,7 +1,5 @@
 ## [Postman Documentation](https://documenter.getpostman.com/view/8801159/SW18waqH?version=latest)
 
--------
-
 ## Main
     - git clone https://github.com/MuhammadOrabi/ruby-elasticsearch-go ruby-elasticsearch-go
     - cd ruby-elasticsearch-go
