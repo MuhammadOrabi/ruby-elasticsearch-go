@@ -8,7 +8,7 @@
 
 ## Load data  
 
-`For testing elasticsearch, I prepaired a sql dumb with 50000 record and also there is a seeder that do the same but it takes almost 10 minutes.`
+`For testing elasticsearch, I prepaired a sql dumb with 50000 record and also there is a seeder that do the same but it takes about 10 minutes.`
 
 ### SQL Dumb
     - ./load-data.sh
