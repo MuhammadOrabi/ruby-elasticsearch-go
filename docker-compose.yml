@@ -37,9 +37,10 @@ services:
       - 3001:3001
     # volumes:
     #   - ./chat-module:/app
-    depends_on: 
+    links: 
       - db
       - elasticsearch
+      - redis
 
   web2:
     build: chat-module/
@@ -50,10 +51,22 @@ services:
       - 3002:3002
     # volumes:
     #   - ./chat-module:/app
-    depends_on: 
+    links: 
       - db
       - elasticsearch
-
+      - redis
+  
+  sidekiq:
+    build: chat-module/
+    command: bundle exec sidekiq -d -L log/sidekiq.log
+    depends_on:
+      - redis
+    # volumes:
+    #   - ./chat-module:/app
+    links: 
+      - db
+      - redis
+  
   elasticsearch:
     image: elasticsearch:7.4.2
     environment:
@@ -79,6 +92,11 @@ services:
     links:
       - web
       - web2
+  
+  redis:
+    image: "redis:alpine"
+    ports: 
+      - 6379:6379
   
   cli:
     build: client/

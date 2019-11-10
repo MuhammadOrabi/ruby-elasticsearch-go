@@ -30,7 +30,6 @@ services:
 
   web:
     build: chat-module/
-    user: "1000:1000"
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     environment: 
       - ELASTICSEARCH_URL=elasticsearch:9200
@@ -41,6 +40,27 @@ services:
     depends_on: 
       - db
       - elasticsearch
+      - redis
+    links: 
+      - db
+      - elasticsearch
+      - redis
+  
+  sidekiq:
+    build: chat-module/
+    command: bundle exec sidekiq -d -L log/sidekiq.log
+    depends_on:
+      - redis
+    volumes:
+      - ./chat-module:/app
+    links: 
+      - db
+      - redis
+  
+  redis:
+    image: "redis:alpine"
+    ports: 
+      - 6379:6379
 
   elasticsearch:
     image: elasticsearch:7.4.2
