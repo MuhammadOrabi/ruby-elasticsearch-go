@@ -1,5 +1,7 @@
-# Postman Requests
+## Postman Requests
     - https://documenter.getpostman.com/view/8801159/SW18waqH?version=latest
+
+-------
 
 ## Main
     - git clone https://github.com/MuhammadOrabi/ruby-elasticsearch-go ruby-elasticsearch-go
@@ -16,3 +18,15 @@
 
 ### Seeder
     - docker-compose exec web bash -c "rails db:setup"
+
+-------
+
+## CLI (powered by [cobra](https://github.com/spf13/cobra))
+
+`CLI that can maange applications && chats && messages`
+
+    - docker-compose up -d
+    - ./client/client -h
+    - ./client/client applications -h
+    - ./client/client chats -h
+    - ./client/client messages -h
