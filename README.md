@@ -15,6 +15,7 @@
 
 ### Seeder
     - docker-compose exec web bash -c "rails db:setup"
+    - docker-compose exec web bash -c "rails searchkick:reindex CLASS=Message"
 
 -------
 
